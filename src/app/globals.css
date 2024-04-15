@@ -2,32 +2,59 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background: 15 23 42; /* slate-900 */
+    --foreground: 241 245 249; /* slate-100 */
+
+    --card: 23 37 84; /* blue-950 */
+    --card-foreground: 241 245 249; /* slate-100 */
+
+    --popover: 23 37 84; /* blue-950 */
+    --popover-foreground: 241 245 249; /* slate-100 */
+
+    --primary: 37 99 235; /* blue-600 */
+    --primary-foreground: 241 245 249; /* slate-100 */
+
+    --secondary: 147 197 253; /* blue-300 */
+    --secondary-foreground: 15 23 42; /* slate-900 */
+
+    --muted: 51 65 85; /* slate-700 */
+    --muted-foreground: 148 163 184; /* slate-400 */
+
+    --accent: 147 197 253; /* blue-300 */
+    --accent-foreground: 15 23 42; /* slate-900 */
+
+    --destructive: 239 68 68; /* red-500 */
+    --destructive-foreground: 241 245 249; /* slate-100 */
+
+    --border: 147 197 253; /* blue-300 */
+    --input: 147 197 253; /* blue-300 */
+    --ring: 241 245 249; /* slate-100 */
+
+    --radius: 0.5rem;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+/* Custom Scrollbar Styles */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 14px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgb(var(--muted));
+  border-radius: 0 8px 8px 0;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  border: 4px solid rgb(var(--muted));
+  background: rgb(var(--muted-foreground));
 }
